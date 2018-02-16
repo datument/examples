@@ -162,3 +162,11 @@ $querier->column( 'id' );
 
 // Get mapping between two column.
 $querier->mapping( 'id', 'label' );
+
+// Aggregated statistics.
+$querier->agg()->count();
+$querier->agg()->sum();
+$querier->agg()->avg();
+$querier->agg()->max();
+$querier->agg()->min();
+$querier->agg()->implode( ',' );
