@@ -61,3 +61,34 @@ if( $needCommit )
 	T::commit();
 else
 	T::rollback();
+
+
+// Nesting.
+
+T::start();
+{
+	T::start();
+
+	// Sub-transaction 0...
+
+	if( $needCommit )
+		T::commit();
+	else
+		T::rollback();
+}
+{
+	T::start();
+
+	// Sub-transaction 1...
+
+	if( $needCommit )
+		T::commit();
+	else
+		T::rollback();
+}
+
+T::commit();
+
+// When count of ::commit() calling matches count of ::start(), the transaction will be commited.
+// When a ::rollback() called, the transaction will be rolled back. And Datument will skip all
+// queries until count of ::commit() or ::rollback() calling equals count of ::start() calling.
