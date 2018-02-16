@@ -18,3 +18,39 @@ use Datument\Datument as D;
  *   complex
  *     ...
  */
+
+
+/**
+ * Creating
+ */
+
+// increment
+$inc= IncrementPrimary::create( [ 'column'=>'value', ] );
+
+D::flush();
+
+$inc->_key_;
+// returns like 1
+
+// integer
+IntegerPrimary::create( 1, [ 'column'=>'value', ] );
+
+D::flush();
+
+// string
+StringPrimary::create( 'id', [ 'column'=>'value', ] );
+
+D::flush();
+
+// complex without increment. [string,string,]
+StringStringPrimary::create( [ 'foo', 'bar', ], [ 'column'=>'value', ] );
+
+D::flush();
+
+// complex with increment. [string,increment,]
+$cpx= StringIncrementPrimary::create( [ 'foo', null, ], [ 'column'=>'value', ] );
+
+D::flush();
+
+$cpx->_key_;
+// returns like [ 'foo', 1, ]
