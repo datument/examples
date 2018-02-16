@@ -53,3 +53,7 @@ $querier->where( 'column', '!IN_SET@', 'set_column' );
 $querier->where( 'column', 'BETWEEN', 1, 8 );
 $querier->where( 'column', '!BETWEEN', 2, 4 );
 $querier->where( 'DATE:created_at', '2018-2-14' );
+
+// Set AND/OR between conditions. AND by default.
+$querier->or()->where( 'column', '<', 1 )->where( 'column', '>', 2 );
+$querier->and()->where( 'column', '>', 1 )->where( 'column', '<', 2 );
