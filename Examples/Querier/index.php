@@ -24,3 +24,12 @@ $querier= User::where( 'age', '>', 5 );
 // From entity set.
 $users= User::getBy( 'age', 8 );
 $querier= $users->querier;
+
+
+/***
+ * Middle methods.
+ */
+
+// Set selected model.
+$querier->from( 'User' );
+$querier->from( User::class );
