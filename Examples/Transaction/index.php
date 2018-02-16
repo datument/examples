@@ -26,6 +26,27 @@ T::do(
 // but will be commited otherwise.
 
 
+// Nesting.
+T::do(
+	function(){
+		T::do(
+			function(){
+				// Sub-transaction 0...
+			}
+		);
+
+		T::do(
+			function(){
+				// Sub-transaction 1...
+			}
+		);
+	}
+);
+
+// The transaction will be commited if all sub-transactions are commited,
+// but will be rolled back otherwise.
+
+
 
 
 /**
