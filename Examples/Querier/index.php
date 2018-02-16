@@ -38,3 +38,18 @@ $querier->from( User::class );
 $querier->select( '*' );
 $querier->select( 'column', 'another_column' );
 $querier->selectExcept( 'column' );
+
+// Set where conditions.
+$querier->where( 'column', 'value' );
+$querier->where( 'column', '=', 'value' );
+$querier->where( 'column', '>', 'value' );
+$querier->where( 'column', '>@', 'another_column' );
+$querier->where( 'column', null );
+$querier->where( 'column', '!=', null );
+$querier->where( 'column', 'IN', [ 1, 2, 3, ] );
+$querier->where( 'column', '!IN', [ 4, 5, 6, ] );
+$querier->where( 'column', 'IN_SET', '1,2,3' );
+$querier->where( 'column', '!IN_SET@', 'set_column' );
+$querier->where( 'column', 'BETWEEN', 1, 8 );
+$querier->where( 'column', '!BETWEEN', 2, 4 );
+$querier->where( 'DATE:created_at', '2018-2-14' );
