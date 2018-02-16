@@ -110,3 +110,10 @@ $querier->limit( 5 )->offset( 10 );
 
 // Distinct
 $querier->distinct();
+
+
+
+/**
+ * Union
+ */
+$unioned= Q::union( ...$queriers );
