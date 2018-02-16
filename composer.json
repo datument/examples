@@ -11,11 +11,36 @@
     ],
     "require": {
         "php": ">=7.1",
-        "datument/datument": "dev-master"
+        "datument/datument": "dev-master",
+        "fenzland/cli": "dev-master",
+        "htsl/htsl": "^0.1"
     },
     "autoload": {
         "psr-4": {
             "Datument\\Examples\\": "Examples/"
         }
-    }
+    },
+    "repositories": [
+        {
+            "type": "path",
+            "url": "../core",
+            "options": {
+                "symlink": false
+            }
+        },
+        {
+            "type": "path",
+            "url": "../../CLI",
+            "options": {
+                "symlink": false
+            }
+        },
+        {
+            "type": "composer",
+            "url": "https://packagist.phpcomposer.com"
+        },
+        {
+            "packagist.org": false
+        }
+    ]
 }

@@ -1,0 +1,5 @@
+@extend( layout )
+
+@section( main )
+	-h2
+		Datument

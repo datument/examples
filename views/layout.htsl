@@ -1,0 +1,15 @@
+HTML5
+-html
+	-head
+		-charset(utf8)
+		-title
+			Datument Examples
+		-css @/prism.css
+		-css @/main.css
+		-js @/prism.js
+	-body
+		-header
+			-h1
+				Datument
+		-main
+			@show( main )
