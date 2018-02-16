@@ -117,3 +117,12 @@ $querier->distinct();
  * Union
  */
 $unioned= Q::union( ...$queriers );
+
+
+/**
+ * Lock
+ */
+// Reading lock
+$querier->lock( 'R' );
+// Writing lock
+$querier->lock( 'W' );
