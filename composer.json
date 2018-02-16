@@ -1,0 +1,21 @@
+{
+    "name": "datument/examples",
+    "description": "Examples for Datument.",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Fenzland",
+            "email": "uukoo@163.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.1",
+        "datument/datument": "dev-master"
+    },
+    "autoload": {
+        "psr-4": {
+            "Datument\\Examples\\": "Examples/"
+        }
+    }
+}
