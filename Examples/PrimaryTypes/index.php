@@ -74,3 +74,23 @@ StringStringPrimary::find( [ 'foo', 'bar', ] );
 
 // complex with increment. [string,increment,]
 StringIncrementPrimary::find( [ 'foo', 8, ] );
+
+
+/**
+ * Deleting
+ */
+
+// increment
+IncrementPrimary::delete( 1 );
+
+// integer
+IntegerPrimary::delete( 1 );
+
+// string
+StringPrimary::delete( 'id' );
+
+// complex without increment. [string,string,]
+StringStringPrimary::delete( [ 'foo', 'bar', ] );
+
+// complex with increment. [string,increment,]
+StringIncrementPrimary::delete( [ 'foo', 8, ] );
