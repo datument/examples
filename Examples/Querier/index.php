@@ -144,3 +144,21 @@ $grouped->select( 'grouped_column', 'COUNT:column', 'AVG:column' );
 // Where with aggregated column.
 $grouped->having( 'grouped_column', '>@', 'SUM:another_column' );
 $grouped->having( 'COUNT:column', '>', 2 );
+
+
+
+/***
+ * Reading method (chain calling terminator).
+ */
+
+// Get first record and return a entity.
+$querier->first();
+
+// Get all record and return a set of entities.
+$querier->list();
+
+// Get specific column.
+$querier->column( 'id' );
+
+// Get mapping between two column.
+$querier->mapping( 'id', 'label' );
