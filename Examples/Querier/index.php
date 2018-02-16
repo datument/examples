@@ -126,3 +126,21 @@ $unioned= Q::union( ...$queriers );
 $querier->lock( 'R' );
 // Writing lock
 $querier->lock( 'W' );
+
+
+
+/***
+ * Aggregated querier.
+ */
+
+// Make a aggregated querier.
+$aggregated= $querier->agg();
+$grouped= $querier->groupBy( 'grouped_column' );
+
+// Select aggregated column.
+$aggregated->select( 'SUM:column', 'AVG:column' );
+$grouped->select( 'grouped_column', 'COUNT:column', 'AVG:column' );
+
+// Where with aggregated column.
+$grouped->having( 'grouped_column', '>@', 'SUM:another_column' );
+$grouped->having( 'COUNT:column', '>', 2 );
