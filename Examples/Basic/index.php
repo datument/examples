@@ -23,3 +23,34 @@ Grade::createLot( [
 ] );
 
 D::flush();
+
+
+/**
+ * Reading
+ */
+
+// Find by primary key.
+Grade::find( 1 );
+
+// Get the first record.
+Grade::first();
+
+// Find by other columns.
+Grade::findBy( 'level', 4 );
+Grade::findBy( [ 'level'=>4, 'short_title'=>'G4', ] );
+
+// Return null instead of throw not found exception.
+Grade::findOrNull( 8 );
+Grade::firstOrNull();
+Grade::findByOrNull( 'level', 4 );
+
+// Find many primary key.
+Grade::findMany( 1, 2, 6 );
+
+// Find many by other columns.
+Grade::listBy( 'level', 4 );
+Grade::listBy( [ 'level'=>4, 'short_title'=>'G4', ] );
+
+// Use query builder.
+Grade::where( 'id', 3 )->first();
+Grade::where( 'id', '<=', 3 )->list();
