@@ -92,3 +92,9 @@ T::commit();
 // When count of ::commit() calling matches count of ::start(), the transaction will be commited.
 // When a ::rollback() called, the transaction will be rolled back. And Datument will skip all
 // queries until count of ::commit() or ::rollback() calling equals count of ::start() calling.
+
+
+
+
+// Datument::flush() is not necessary, Datument will flush before a transaction started and after
+// a transaction commited or rolled back.
