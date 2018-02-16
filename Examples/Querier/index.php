@@ -107,3 +107,6 @@ $querier->orderBy( 'second_order_column', 'ASC' )->orderBy( 'first_order_column'
 $querier->limit( 5 );
 $querier->limit( 5, 10 );
 $querier->limit( 5 )->offset( 10 );
+
+// Distinct
+$querier->distinct();
