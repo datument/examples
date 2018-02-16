@@ -77,3 +77,28 @@ $grade->increase( 'level', -1 );
 Grade::where( 'short_title', 'g6' )->set( [ 'short_title'=>'G6', ] );
 
 D::flush();
+
+
+
+/**
+ * Deleting
+ */
+
+Grade::find( 3 )->delete();
+
+Grade::delete( 6 );
+
+Grade::deleteBy( 'short_title', 'G5' );
+Grade::deleteBy( [ 'level'=>4, ] );
+
+Grade::where( 'level', '!=', 2 )->delete();
+
+Grade::deleteAll();
+
+Grade::truncate();
+
+D::flush();
+
+$school= School::find( 'MIT' );
+
+$school->users;
