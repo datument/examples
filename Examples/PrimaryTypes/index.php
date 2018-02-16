@@ -54,3 +54,23 @@ D::flush();
 
 $cpx->_key_;
 // returns like [ 'foo', 1, ]
+
+
+/**
+ * Finding
+ */
+
+// increment
+IncrementPrimary::find( 1 );
+
+// integer
+IntegerPrimary::find( 1 );
+
+// string
+StringPrimary::find( 'id' );
+
+// complex without increment. [string,string,]
+StringStringPrimary::find( [ 'foo', 'bar', ] );
+
+// complex with increment. [string,increment,]
+StringIncrementPrimary::find( [ 'foo', 8, ] );
