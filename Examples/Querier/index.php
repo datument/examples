@@ -57,3 +57,30 @@ $querier->where( 'DATE:created_at', '2018-2-14' );
 // Set AND/OR between conditions. AND by default.
 $querier->or()->where( 'column', '<', 1 )->where( 'column', '>', 2 );
 $querier->and()->where( 'column', '>', 1 )->where( 'column', '<', 2 );
+
+// Nested conditions, array style.
+$querier->nested(
+	[
+		[ 'column', null, ],
+		[ 'column', 'IN', [ 1, 2, ], ],
+		[
+			[
+				[ 'another_column', '!=', null, ],
+				[ 'another_column', '=@', 'column', ],
+			], 'AND',
+		],
+	], 'OR'
+);
+// Nested conditions, function style.
+$querier->nested(
+	function( $q ){
+		$q->where( 'column', null );
+		$q->where( 'column', 'IN', [ 1, 2, ] );
+		$q->nested(
+			function( $q ){
+				$q->where( 'another_column', '!=', null );
+				$q->where( 'another_column', '=@', 'column' );
+			}, 'AND'
+		);
+	}, 'OR'
+);
