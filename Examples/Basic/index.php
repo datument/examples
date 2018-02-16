@@ -54,3 +54,26 @@ Grade::listBy( [ 'level'=>4, 'short_title'=>'G4', ] );
 // Use query builder.
 Grade::where( 'id', 3 )->first();
 Grade::where( 'id', '<=', 3 )->list();
+
+
+
+/**
+ * Updating
+ */
+
+$grade= Grade::find( 5 );
+
+$grade->title= 'Grode 5';
+
+$grade->set( 'title', 'Grude 5' );
+
+$grade->set( [ 'title'=>'Grade 5', ] );
+
+$grade->increase( 'level' );
+$grade->decrease( 'level' );
+$grade->increase( 'level', 2 );
+$grade->increase( 'level', -1 );
+
+Grade::where( 'short_title', 'g6' )->set( [ 'short_title'=>'G6', ] );
+
+D::flush();
