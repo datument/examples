@@ -33,3 +33,8 @@ $querier= $users->querier;
 // Set selected model.
 $querier->from( 'User' );
 $querier->from( User::class );
+
+// Set selected columns
+$querier->select( '*' );
+$querier->select( 'column', 'another_column' );
+$querier->selectExcept( 'column' );
