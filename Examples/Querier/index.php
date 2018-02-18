@@ -25,6 +25,9 @@ $querier= User::where( 'age', '>', 5 );
 $users= User::getBy( 'age', 8 );
 $querier= $users->querier;
 
+// From clone.
+$new_querier= clone $querier;
+
 
 /***
  * Middle methods.
@@ -37,7 +40,7 @@ $querier->from( User::class );
 // Set selected columns
 $querier->select( '*' );
 $querier->select( 'column', 'another_column' );
-$querier->selectExcept( 'column' );
+$querier->selectEx( 'column' );
 
 // Set where conditions.
 $querier->where( 'column', 'value' );
@@ -73,13 +76,13 @@ $querier->nested(
 );
 // Nested conditions, function style.
 $querier->nested(
-	function( $q ){
-		$q->where( 'column', null );
-		$q->where( 'column', 'IN', [ 1, 2, ] );
-		$q->nested(
-			function( $q ){
-				$q->where( 'another_column', '!=', null );
-				$q->where( 'another_column', '=@', 'column' );
+	function( $cs ){
+		$cs->where( 'column', null );
+		$cs->where( 'column', 'IN', [ 1, 2, ] );
+		$cs->nested(
+			function( $cs ){
+				$cs->where( 'another_column', '!=', null );
+				$cs->where( 'another_column', '=@', 'column' );
 			}, 'AND'
 		);
 	}, 'OR'
@@ -96,7 +99,7 @@ $querier->orderBy( 'column', 'DESC' );
 $querier->orderBy( 'column' );
 
 // Multi-order by array, first as first.
-$querier->orderBy( [ 'first_order_column'=>'DESC', 'second_order_column'=>'ASC', ] );
+$querier->orderByM( [ 'first_order_column'=>'DESC', 'second_order_column'=>'ASC', ] );
 // Multi-order by multi-call, last as first.
 $querier->orderBy( 'second_order_column', 'ASC' )->orderBy( 'first_order_column', 'DESC' );
 
@@ -107,6 +110,8 @@ $querier->orderBy( 'second_order_column', 'ASC' )->orderBy( 'first_order_column'
 $querier->limit( 5 );
 $querier->limit( 5, 10 );
 $querier->limit( 5 )->offset( 10 );
+
+$querier->unlimit();
 
 // Distinct
 $querier->distinct();
@@ -146,6 +151,14 @@ $grouped->having( 'grouped_column', '>@', 'SUM:another_column' );
 $grouped->having( 'COUNT:column', '>', 2 );
 
 
+// $returned= $origin->where( ... );     $returned === $origin;
+// $returned= $origin->orderBy( ... );   $returned === $origin;
+// ...
+//
+// $returned= $origin->agg();            $returned !== $origin;
+// $returned= $origin->groupBy( ... );   $returned !== $origin;
+
+
 
 /***
  * Reading method (chain calling terminator).
@@ -153,6 +166,13 @@ $grouped->having( 'COUNT:column', '>', 2 );
 
 // Get first record and return a entity.
 $querier->first();
+// Get nth record and return a entity.
+$querier->nth( 8 );
+
+// Get first record and return a entity. Return null instead of throw exception when record not found.
+$querier->firstOrNull();
+// Get nth record and return a entity. Return null instead of throw exception when record not found.
+$querier->nthOrNull( 8 );
 
 // Get all record and return a set of entities.
 $querier->list();
