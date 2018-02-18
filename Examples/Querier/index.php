@@ -96,7 +96,7 @@ $querier->orderBy( 'column', 'DESC' );
 $querier->orderBy( 'column' );
 
 // Multi-order by array, first as first.
-$querier->orderBy( [ 'first_order_column'=>'DESC', 'second_order_column'=>'ASC', ] );
+$querier->orderByM( [ 'first_order_column'=>'DESC', 'second_order_column'=>'ASC', ] );
 // Multi-order by multi-call, last as first.
 $querier->orderBy( 'second_order_column', 'ASC' )->orderBy( 'first_order_column', 'DESC' );
 
