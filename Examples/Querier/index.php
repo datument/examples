@@ -25,6 +25,9 @@ $querier= User::where( 'age', '>', 5 );
 $users= User::getBy( 'age', 8 );
 $querier= $users->querier;
 
+// From clone.
+$new_querier= clone $querier;
+
 
 /***
  * Middle methods.
