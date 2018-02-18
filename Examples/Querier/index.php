@@ -37,7 +37,7 @@ $querier->from( User::class );
 // Set selected columns
 $querier->select( '*' );
 $querier->select( 'column', 'another_column' );
-$querier->selectExcept( 'column' );
+$querier->selectEx( 'column' );
 
 // Set where conditions.
 $querier->where( 'column', 'value' );
