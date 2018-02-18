@@ -158,6 +158,13 @@ $grouped->having( 'COUNT:column', '>', 2 );
 
 // Get first record and return a entity.
 $querier->first();
+// Get nth record and return a entity.
+$querier->nth( 8 );
+
+// Get first record and return a entity. Return null instead of throw exception when record not found.
+$querier->firstOrNull();
+// Get nth record and return a entity. Return null instead of throw exception when record not found.
+$querier->nthOrNull( 8 );
 
 // Get all record and return a set of entities.
 $querier->list();
