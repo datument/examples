@@ -151,6 +151,14 @@ $grouped->having( 'grouped_column', '>@', 'SUM:another_column' );
 $grouped->having( 'COUNT:column', '>', 2 );
 
 
+// $returned= $origin->where( ... );     $returned === $origin;
+// $returned= $origin->orderBy( ... );   $returned === $origin;
+// ...
+//
+// $returned= $origin->agg();            $returned !== $origin;
+// $returned= $origin->groupBy( ... );   $returned !== $origin;
+
+
 
 /***
  * Reading method (chain calling terminator).
