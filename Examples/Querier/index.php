@@ -73,13 +73,13 @@ $querier->nested(
 );
 // Nested conditions, function style.
 $querier->nested(
-	function( $q ){
-		$q->where( 'column', null );
-		$q->where( 'column', 'IN', [ 1, 2, ] );
-		$q->nested(
-			function( $q ){
-				$q->where( 'another_column', '!=', null );
-				$q->where( 'another_column', '=@', 'column' );
+	function( $cs ){
+		$cs->where( 'column', null );
+		$cs->where( 'column', 'IN', [ 1, 2, ] );
+		$cs->nested(
+			function( $cs ){
+				$cs->where( 'another_column', '!=', null );
+				$cs->where( 'another_column', '=@', 'column' );
 			}, 'AND'
 		);
 	}, 'OR'
