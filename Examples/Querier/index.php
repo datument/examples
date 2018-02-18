@@ -111,6 +111,8 @@ $querier->limit( 5 );
 $querier->limit( 5, 10 );
 $querier->limit( 5 )->offset( 10 );
 
+$querier->unlimit();
+
 // Distinct
 $querier->distinct();
 
