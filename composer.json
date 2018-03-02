@@ -11,8 +11,8 @@
     ],
     "require": {
         "php": ">=7.1",
-        "datument/datument": "dev-master",
-        "fenzland/cli": "dev-master",
+        "datument/datument": "dev-dev",
+        "fenzland/cli": "dev-dev",
         "htsl/htsl": "^0.1"
     },
     "autoload": {
@@ -23,14 +23,14 @@
     "repositories": [
         {
             "type": "path",
-            "url": "../core",
+            "url": "../datument",
             "options": {
                 "symlink": false
             }
         },
         {
             "type": "path",
-            "url": "../../CLI",
+            "url": "../../php-cli",
             "options": {
                 "symlink": false
             }
